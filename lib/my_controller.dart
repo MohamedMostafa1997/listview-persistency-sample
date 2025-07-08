@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
 class MyController {
-
   List itemsNames = [
     'kite',
     'keyboard',
@@ -38,20 +35,17 @@ class MyController {
     'ant',
     'ceiling',
     'people',
-    'thursday'
+    'thursday',
+  
   ];
 
-  ValueNotifier<List<int>> checkedItemsIndexes = ValueNotifier(List<int>.empty(growable: false));
+  List<int> checkedItemsIndexes = (List<int>.empty(growable: true));
 
   void changeCheckStatus(int index) {
-    // copy of the already existing list so the value of the notifier can be changed and trigger the rebuild
-    // mere addition or removal of an item will not change the list object, then the rebuild won't trigger
-    final List<int> tempList = List.of(checkedItemsIndexes.value);
-    if (tempList.contains(index)) {
-      tempList.remove(index);
+    if (checkedItemsIndexes.contains(index)) {
+      checkedItemsIndexes.remove(index);
     } else {
-      tempList.add(index);
+      checkedItemsIndexes.add(index);
     }
-    checkedItemsIndexes.value = tempList;
   }
 }
