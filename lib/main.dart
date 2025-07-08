@@ -16,7 +16,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final MyController controller = MyController();
 
-  void handleStateChange(int index) {
+  void changeCheckStatus(int index) {
     setState(() {
       controller.changeCheckStatus(index);
     });
@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return MyListItem(
                   controller.itemsNames[index],
                   index,
-                  handleStateChange,
+                  () => changeCheckStatus(index),
                   controller.checkedItemsIndexes.contains(index));
             }),
       ),
